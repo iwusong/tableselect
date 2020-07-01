@@ -3,6 +3,9 @@
     <div>
       <button @click="clickbutton(index)" v-for="(item,index) in tabledata[0]" :key="item">{{item}}</button>
     </div>
+    <div style="height:36px">
+
+    </div>
     <table>
       <table border="1">
         <tr v-for="item in tabledata" :key="item.key">
