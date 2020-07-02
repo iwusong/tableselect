@@ -1,113 +1,71 @@
- <template>
+  <template>
   <div>
+    <el-table style="width:100%" :data="tableData">
+      <el-table-column v-if="display[1]" prop="date" label="日期" width="180"></el-table-column>
+      <el-table-column v-if="display[2]" prop="name" label="AA" width="180"></el-table-column>
+      <el-table-column v-if="display[3]" prop="name" label="BB" width="180"></el-table-column>
+      <el-table-column v-if="display[4]" prop="name" label="CC" width="180"></el-table-column>
+      <el-table-column v-if="display[5]" prop="name" label="DD" width="180"></el-table-column>
+      <el-table-column v-if="display[6]" prop="name" label="EE" width="180"></el-table-column>
+      <el-table-column v-if="display[7]" prop="address" label="地址"></el-table-column>
+    </el-table>
     <div>
-      <button @click="clickbutton(index)" v-for="(item,index) in tabledata[0]" :key="item">{{item}}</button>
+      <el-switch class="display" active-text="日期" v-model="display[1]"></el-switch>
+      <el-switch class="display" active-text="AA" v-model="display[2]"></el-switch>
+      <el-switch class="display" active-text="BB" v-model="display[3]"></el-switch>
+      <el-switch class="display" active-text="CC" v-model="display[4]"></el-switch>
+      <el-switch class="display" active-text="DD" v-model="display[5]"></el-switch>
+      <el-switch class="display" active-text="EE" v-model="display[6]"></el-switch>
+      <el-switch class="display" active-text="地址" v-model="display[7]"></el-switch>
     </div>
-    <div style="height:36px">
-
-    </div>
-    <table>
-      <table border="1">
-        <tr v-for="item in tabledata" :key="item.key">
-          <td v-show="!flag[index]" v-for="(data,index) in item" :key="data.key">{{data}}</td>
-        </tr>
-      </table>
-    </table>
   </div>
 </template>
 
-<script>
+  <script>
 export default {
   data() {
     return {
-      tabledata: [
-        [
-          "ID",
-          "AA",
-          "BB",
-          "CC",
-          "DD",
-          "EE",
-          "FF",
-          "GG",
-          "ZZ",
-          "XX",
-          "CC",
-          "VV"
-        ],
-        [
-          "9527",
-          "AA",
-          "BB",
-          "CC",
-          "DD",
-          "EE",
-          "FF",
-          "GG",
-          "ZZ",
-          "XX",
-          "CC",
-          "VV"
-        ],
-        [
-          "9528",
-          "AA",
-          "BB",
-          "CC",
-          "DD",
-          "EE",
-          "FF",
-          "GG",
-          "ZZ",
-          "XX",
-          "CC",
-          "VV"
-        ],
-        [
-          "9529",
-          "AA",
-          "BB",
-          "CC",
-          "DD",
-          "EE",
-          "FF",
-          "GG",
-          "ZZ",
-          "XX",
-          "CC",
-          "VV"
-        ]
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄"
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        }
       ],
-      flag: {}
+      display: {
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true,
+        6: true,
+        7: true
+      }
     };
-  },
-  created() {
-    this.tabledata[0].forEach((item, index) => {
-      this.flag[index] = false;
-    });
-    console.log(this.flag);
-  },
-  methods: {
-    clickbutton(index) {
-      this.flag[index] = !this.flag[index];
-      this.$forceUpdate();
-    }
   }
 };
 </script>
-
-<style scoped>
-table {
-  font-size: 0.6vw;
-  color: #686868;
-  border-collapse: collapse;
+<style>
+.display {
+  margin: 10px;
+  padding: 0 40px;
 }
-td {
-  padding: 0.5vw;
-  border: solid 1px #686868;
-  width: 50px;
-}
-button {
-  width: 61.5px;
+el-table {
+  width: 99.9%;
 }
 </style>
